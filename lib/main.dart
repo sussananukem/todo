@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
       title: 'Todo',
       theme: ThemeData(
         primaryColor: Colors.lightBlueAccent,
+        primarySwatch: Colors.lightBlue,
         useMaterial3: true,
       ),
       home: const TaskScreen(),

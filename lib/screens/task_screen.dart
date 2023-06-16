@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../widgets/task_list.dart';
+import 'add_task_screen.dart';
 
 class TaskScreen extends StatefulWidget {
   const TaskScreen({Key? key}) : super(key: key);
@@ -13,11 +14,26 @@ class _TaskScreenState extends State<TaskScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlueAccent,
+      backgroundColor: Colors.deepPurple,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: Colors.lightBlueAccent,
-        child: const Icon(Icons.add, color: Colors.white,),
+        onPressed: () {
+          showModalBottomSheet(
+            context: context,
+            isScrollControlled: true,
+            builder: (context) => SingleChildScrollView(
+              child: Container(
+                padding: EdgeInsets.only(
+                    bottom: MediaQuery.of(context).viewInsets.bottom),
+                child: const AddTaskScreen(),
+              ),
+            ),
+          );
+        },
+        backgroundColor: Colors.deepPurple,
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,7 +52,7 @@ class _TaskScreenState extends State<TaskScreen> {
                   radius: 30.0,
                   child: Icon(
                     Icons.list,
-                    color: Colors.lightBlueAccent,
+                    color: Colors.deepPurple,
                     size: 30.0,
                   ),
                 ),
@@ -79,7 +95,5 @@ class _TaskScreenState extends State<TaskScreen> {
     );
   }
 }
-
-
 
 
