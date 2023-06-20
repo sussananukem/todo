@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../models/task_model.dart';
 import '../widgets/task_list.dart';
 import 'add_task_screen.dart';
 
@@ -11,6 +12,18 @@ class TaskScreen extends StatefulWidget {
 }
 
 class _TaskScreenState extends State<TaskScreen> {
+  List<TaskModel> taskModels = [
+    TaskModel(
+      taskTitle: 'Enable Add Task Functionality',
+    ),
+    TaskModel(
+      taskTitle: 'Learn Providers',
+    ),
+    TaskModel(
+      taskTitle: 'Implement Providers in GardenQuest',
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +37,15 @@ class _TaskScreenState extends State<TaskScreen> {
               child: Container(
                 padding: EdgeInsets.only(
                     bottom: MediaQuery.of(context).viewInsets.bottom),
-                child: const AddTaskScreen(),
+                child: AddTaskScreen(
+                  addNewTask: (newText) {
+                    setState(() {
+                      taskModels.add(
+                        TaskModel(taskTitle: newText),
+                      );
+                    });
+                  },
+                ),
               ),
             ),
           );
@@ -77,6 +98,8 @@ class _TaskScreenState extends State<TaskScreen> {
               ],
             ),
           ),
+
+          //TASK LIST
           Expanded(
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -87,7 +110,9 @@ class _TaskScreenState extends State<TaskScreen> {
                   topRight: Radius.circular(20),
                 ),
               ),
-              child: const TaskList(),
+              child: TaskList(
+                taskModel: taskModels,
+              ),
             ),
           )
         ],
@@ -95,5 +120,3 @@ class _TaskScreenState extends State<TaskScreen> {
     );
   }
 }
-
-
