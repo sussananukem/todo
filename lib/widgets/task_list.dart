@@ -4,9 +4,9 @@ import 'package:todo/widgets/task_tile.dart';
 import '../models/task_model.dart';
 
 class TaskList extends StatefulWidget {
-  List<TaskModel> taskModel;
+  final List<TaskModel> taskModel;
 
-  TaskList({
+  const TaskList({
     super.key,
     required this.taskModel,
   });

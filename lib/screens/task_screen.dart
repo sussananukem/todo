@@ -59,8 +59,8 @@ class _TaskScreenState extends State<TaskScreen> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
-            padding: EdgeInsets.only(
+           Padding(
+            padding: const EdgeInsets.only(
               top: 60.0,
               left: 30,
               bottom: 30,
@@ -68,7 +68,7 @@ class _TaskScreenState extends State<TaskScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CircleAvatar(
+                const CircleAvatar(
                   backgroundColor: Colors.white,
                   radius: 30.0,
                   child: Icon(
@@ -77,10 +77,10 @@ class _TaskScreenState extends State<TaskScreen> {
                     size: 30.0,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                Text(
+                const Text(
                   'ToDo',
                   style: TextStyle(
                     color: Colors.white,
@@ -89,8 +89,8 @@ class _TaskScreenState extends State<TaskScreen> {
                   ),
                 ),
                 Text(
-                  '12 Tasks',
-                  style: TextStyle(
+                  '${taskModels.length} Tasks',
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 20,
                   ),
