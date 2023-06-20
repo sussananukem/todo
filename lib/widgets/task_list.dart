@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:todo/widgets/task_tile.dart';
 
 import '../models/task_model.dart';
+import '../provider/provider.dart';
 
 class TaskList extends StatefulWidget {
-  final List<TaskModel> taskModel;
-
   const TaskList({
     super.key,
-    required this.taskModel,
   });
 
   @override
@@ -21,16 +20,14 @@ class _TaskListState extends State<TaskList> {
     return ListView.builder(
       itemBuilder: (context, index) {
         return TaskTile(
-          isChecked: widget.taskModel[index].isDone,
-          taskTitle: widget.taskModel[index].taskTitle,
+          isChecked:  Provider.of<Data>(context).taskModels[index].isDone,
+          taskTitle: Provider.of<Data>(context).taskModels[index].taskTitle,
           toggleStateFunction: (bool? newValue) {
-            setState(() {
-              widget.taskModel[index].toggleDone();
-            });
+            Provider.of<Data>(context, listen: false).toggle(newValue, index);
           },
         );
       },
-      itemCount: widget.taskModel.length,
+      itemCount: Provider.of<Data>(context).taskModels.length,
     );
   }
 }

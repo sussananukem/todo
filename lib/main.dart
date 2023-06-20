@@ -1,6 +1,8 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todo/provider/provider.dart';
 import 'package:todo/screens/task_screen.dart';
 
 void main() {
@@ -17,16 +19,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      locale: DevicePreview.locale(context),
-      builder: DevicePreview.appBuilder,
-      title: 'Todo',
-      theme: ThemeData(
-        primaryColor: Colors.lightBlueAccent,
-        primarySwatch: Colors.lightBlue,
-        useMaterial3: true,
+    return ChangeNotifierProvider(
+      create: (BuildContext context) => Data(),
+      child: MaterialApp(
+        locale: DevicePreview.locale(context),
+        builder: DevicePreview.appBuilder,
+        title: 'Todo',
+        theme: ThemeData(
+          useMaterial3: true,
+        ),
+        home: const TaskScreen(),
       ),
-      home: const TaskScreen(),
     );
   }
 }

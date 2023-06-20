@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../models/task_model.dart';
+import 'package:provider/provider.dart';
+ import '../provider/provider.dart';
 import '../widgets/task_list.dart';
 import 'add_task_screen.dart';
 
@@ -12,18 +12,6 @@ class TaskScreen extends StatefulWidget {
 }
 
 class _TaskScreenState extends State<TaskScreen> {
-  List<TaskModel> taskModels = [
-    TaskModel(
-      taskTitle: 'Enable Add Task Functionality',
-    ),
-    TaskModel(
-      taskTitle: 'Learn Providers',
-    ),
-    TaskModel(
-      taskTitle: 'Implement Providers in GardenQuest',
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,11 +27,7 @@ class _TaskScreenState extends State<TaskScreen> {
                     bottom: MediaQuery.of(context).viewInsets.bottom),
                 child: AddTaskScreen(
                   addNewTask: (newText) {
-                    setState(() {
-                      taskModels.add(
-                        TaskModel(taskTitle: newText),
-                      );
-                    });
+                    Provider.of<Data>(context, listen: false).addTask(newText);
                   },
                 ),
               ),
@@ -59,7 +43,7 @@ class _TaskScreenState extends State<TaskScreen> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-           Padding(
+          Padding(
             padding: const EdgeInsets.only(
               top: 60.0,
               left: 30,
@@ -89,7 +73,7 @@ class _TaskScreenState extends State<TaskScreen> {
                   ),
                 ),
                 Text(
-                  '${taskModels.length} Tasks',
+                  '${Provider.of<Data>(context).taskModels.length} Tasks',
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 20,
@@ -110,9 +94,7 @@ class _TaskScreenState extends State<TaskScreen> {
                   topRight: Radius.circular(20),
                 ),
               ),
-              child: TaskList(
-                taskModel: taskModels,
-              ),
+              child: const TaskList(),
             ),
           )
         ],
