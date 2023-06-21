@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 import '../models/task_model.dart';
 
-class Data extends ChangeNotifier{
+class Data extends ChangeNotifier {
   List<TaskModel> taskModels = [
     TaskModel(
       taskTitle: 'Enable Add Task Functionality',
@@ -15,19 +15,18 @@ class Data extends ChangeNotifier{
     ),
   ];
 
-  void addTask(String newText){
-    taskModels.add(
-      TaskModel(taskTitle: newText),
-    );
+  void addTask(String newText) {
+    final task = TaskModel(taskTitle: newText);
+    taskModels.add(task);
     notifyListeners();
   }
 
-  void toggle(bool? newValue, int index){
+  void toggle(bool? newValue, int index) {
     taskModels[index].toggleDone();
     notifyListeners();
   }
 
-  int get tasksCount{
+  int get tasksCount {
     return taskModels.length;
   }
 }

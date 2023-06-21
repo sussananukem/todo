@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
- import '../provider/provider.dart';
+import '../provider/provider.dart';
 import '../widgets/task_list.dart';
 import 'add_task_screen.dart';
 
@@ -20,11 +20,7 @@ class TaskScreen extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.only(
                     bottom: MediaQuery.of(context).viewInsets.bottom),
-                child: AddTaskScreen(
-                  addNewTask: (newText) {
-                    Provider.of<Data>(context, listen: false).addTask(newText);
-                  },
-                ),
+                child: const AddTaskScreen(),
               ),
             ),
           );
