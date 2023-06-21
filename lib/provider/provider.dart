@@ -26,4 +26,8 @@ class Data extends ChangeNotifier{
     taskModels[index].toggleDone();
     notifyListeners();
   }
+
+  int get tasksCount{
+    return taskModels.length;
+  }
 }

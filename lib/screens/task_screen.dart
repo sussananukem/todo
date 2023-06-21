@@ -73,7 +73,7 @@ class _TaskScreenState extends State<TaskScreen> {
                   ),
                 ),
                 Text(
-                  '${Provider.of<Data>(context).taskModels.length} Tasks',
+                  '${Provider.of<Data>(context).tasksCount} Tasks',
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 20,
