@@ -12,21 +12,21 @@ class TaskList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<TaskData>(
-      builder: (context, data, child) {
+      builder: (context, taskData, child) {
         return ListView.builder(
           itemBuilder: (context, index) {
+            final task = taskData.taskModels[index];
             return TaskTile(
-              isChecked: data.taskModels[index].isDone,
-              taskTitle: data.taskModels[index].taskTitle,
+              isChecked: task.isDone,
+              taskTitle: task.taskTitle,
               toggleStateFunction: (_) {
-                Provider.of<TaskData>(context, listen: false)
-                    .toggle(data.taskModels[index]);
+                taskData.toggle(task);
               },
-              removeTask: () => Provider.of<TaskData>(context, listen: false)
-                  .deleteTask(data.taskModels[index]),
+              removeTask: () => taskData
+                  .deleteTask(task),
             );
           },
-          itemCount: data.tasksCount,
+          itemCount: taskData.tasksCount,
         );
       },
     );
