@@ -6,15 +6,7 @@ import '../models/task_model.dart';
 
 class TaskData extends ChangeNotifier {
   final List<TaskModel> _taskModels = [
-    TaskModel(
-      taskTitle: 'Enable Add Task Functionality',
-    ),
-    TaskModel(
-      taskTitle: 'Learn Providers',
-    ),
-    TaskModel(
-      taskTitle: 'Implement Providers in GardenQuest',
-    ),
+
   ];
 
   UnmodifiableListView<TaskModel> get taskModels{
