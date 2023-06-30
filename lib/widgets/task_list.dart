@@ -22,8 +22,7 @@ class TaskList extends StatelessWidget {
               toggleStateFunction: (_) {
                 taskData.toggle(task);
               },
-              removeTask: () => taskData
-                  .deleteTask(task),
+              removeTask: () => taskData.deleteTask(task),
             );
           },
           itemCount: taskData.tasksCount,
